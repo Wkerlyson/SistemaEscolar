@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+<head>
+</head>
+
+<body>
+	<section layout:fragment="conteudo">
+		<div class="page-header">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-8">
+						<h1>Cadastro Aluno</h1>
+					</div>
+
+					<div class="col-xs-4">
+						<div class="aw-page-header-controls">
+							<a class="btn btn-primary" th:href="@{/alunos}"> <i
+								class="fa fa-table"></i> <span class="hidden-xs hidden-sm">Lista
+									alunos</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+
+			<form method="POST" class="form-vertical  js-form-loading"
+				th:object="${aluno}" th:action="@{/alunos/novo}">
+				<!-- <div class="alert  alert-danger  alert-dismissible" role="alert"
+					th:if="${#fields.hasAnyErrors()}">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+
+					<div th:each="erro: ${#fields.detailedErrors()}">
+						<i class="fa fa-exclamation-circle"></i>
+						
+						<span th:text="${erro.message}">Mensagem erro.</span>
+					</div>
+				</div>
+
+				<div class="alert  alert-success"
+					th:if="${!#strings.isEmpty(mensagem)}">
+					<i class="fa fa-check-circle"></i>
+
+					<span th:text="${mensagem}">Mensagem sucesso!</span>
+				</div> -->
+
+				<div class="row">
+					<div class="col-sm-12">
+						<strong>DADOS PESSOAIS</strong>
+						<hr>
+					</div>
+					<div class="col-sm-2">
+						<div class="form-group">
+							<div class="form-group">
+								<label for="id">Matrícula</label> <input id="id" type="number"
+									class="form-control" th:field="*{id}" disabled="disabled" />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-7">
+						<div class="form-group">
+							<div class="form-group">
+								<label for="nome">Nome *</label> <input id="nome" type="text"
+									class="form-control" th:field="*{nome}" />
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="form-group">
+							<div class="form-group">
+								<label for="data">Data de Nascimento *</label> <input
+									id="dataNascimento" type="date" class="form-control"
+									th:field="*{dataNascimento}" />
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<strong>ENDEREÇO</strong>
+						<hr>
+					</div>
+					<div class="col-sm-3">
+						<div class="form-group">
+							<div class="form-group">
+								<label for="cidade">Cidade *</label> <input
+									id="cidade" type="text" class="form-control"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<div class="form-group">
+								<label for="bairro">Bairro *</label> <input
+									id="bairro" type="text" class="form-control"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="form-group">
+							<div class="form-group">
+								<label for="rua">Rua</label> <input
+									id="rua" type="text" class="form-control"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="form-group">
+							<div class="form-group">
+								<label for="numero">Número</label> <input
+									id="numero" type="text" class="form-control"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<strong>FILIAÇÃO</strong>
+						<hr>
+					</div>
+					<div class="col-sm-5">
+						<div class="form-group">
+							<div class="form-group">
+								<label for="nomeMae">Nome da Mãe *</label> <input id="nomeMae"
+									type="text" class="form-control" th:field="*{nomeMae}" />
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-5">
+						<div class="form-group">
+							<div class="form-group">
+								<label for="nomePai">Nome do Pai *</label> <input id="nomePai"
+									type="text" class="form-control" th:field="*{nomePai}" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Salvar</button>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

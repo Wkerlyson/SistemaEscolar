@@ -1,6 +1,6 @@
 package com.secti.sistemaescolar.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -16,9 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.jpamodelgen.xml.jaxb.JoinColumn;
 import org.hibernate.validator.constraints.NotBlank;
-
 
 @Entity
 public class Turma {
@@ -41,11 +40,9 @@ public class Turma {
 	@OneToMany(mappedBy = "id.turma")
 	private List<TurmaAluno> turmaAlunos; 
 	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="turma_disciplina",  
-            joinColumns=   @JoinColumn(name="id_turma", referencedColumnName="id_turma"),  
-        inverseJoinColumns= @JoinColumn(name="id_disciplina", referencedColumnName="id_disciplina")  
-        )  
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "turma_disciplina", joinColumns = @JoinColumn(name = "id_turma", referencedColumnName = "id_turma"),
+			inverseJoinColumns = @JoinColumn(name = "id_disciplina", referencedColumnName = "id_disciplina"))  
 	private List<Disciplina> disciplinas;
 	
 	public Long getId() {

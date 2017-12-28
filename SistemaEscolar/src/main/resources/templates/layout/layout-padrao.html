@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<title>AlgaWorks</title>
+	<title>Sistema Escolar</title>
 
 	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/vendors.min.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/algaworks.min.css}" />
@@ -27,7 +27,8 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand  hidden-xs" href="#">
-						<img alt="AlgaWorks" th:src="@{/layout/images/logo.png}" />
+						<span>Sistema Escolar</span>
+						<!-- <img alt="Sistema Escolar" th:src="@{/layout/images/logo.png}" /> -->
 					</a>
 
 					<ul class="nav  navbar-nav">
@@ -48,16 +49,16 @@
 					<ul class="aw-menu__list">
 
 						<li class="aw-menu__item">
-							<a th:href="@{/vinhos/novo}">
+							<a th:href="@{/alunos/novo}">
 								<i class="fa  fa-fw  fa-plus-square"></i>
 
-								<span>Cadastro vinho</span>
+								<span>Cadastro alunos</span>
 							</a>
 
-							<a th:href="@{/vinhos}">
+							<a th:href="@{/alunos}">
 								<i class="fa  fa-fw  fa-table"></i>
 
-								<span>Lista vinhos</span>
+								<span>Lista alunos</span>
 							</a>
 						</li>
 					</ul>
@@ -72,7 +73,7 @@
 
 		<footer class="aw-layout-footer  js-content">
 			<div class="container-fluid">
-				<span class="aw-footer-disclaimer">&copy; 2017 AlgaWorks. Todos os direitos reservados.</span>
+				<span class="aw-footer-disclaimer">&copy; 2018 SECTI. Todos os direitos reservados.</span>
 			</div>
 		</footer>
 	</div>

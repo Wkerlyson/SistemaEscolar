@@ -32,7 +32,12 @@ public class Aluno {
 	private Date dataNascimento;
 	
 	@NotBlank
-	private String responsavel;
+	@Column(name = "nome_mae")
+	private String nomeMae;
+	
+	@NotBlank
+	@Column(name = "nome_pai")
+	private String nomePai;
 	
 	@OneToMany(mappedBy = "id.aluno")
 	private List<TurmaAluno> turmaAlunos;
@@ -61,14 +66,22 @@ public class Aluno {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getResponsavel() {
-		return responsavel;
+
+	public String getNomeMae() {
+		return nomeMae;
 	}
 
-	public void setResponsavel(String responsavel) {
-		this.responsavel = responsavel;
+	public void setNomeMae(String nomeMae) {
+		this.nomeMae = nomeMae;
 	}
-	
+
+	public String getNomePai() {
+		return nomePai;
+	}
+
+	public void setNomePai(String nomePai) {
+		this.nomePai = nomePai;
+	}
 	
 
 	public List<TurmaAluno> getTurmaAlunos() {

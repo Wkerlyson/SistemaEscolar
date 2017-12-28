@@ -1,5 +1,5 @@
 package com.secti.sistemaescolar.model;
 
 public enum SituacaoAluno {
-	APROVADO, REPROVADO, DESISTENTE, INATIVO
+	APROVADO, REPROVADO, DESISTENTE, TRANSFERIDO, EVADIDO
 }

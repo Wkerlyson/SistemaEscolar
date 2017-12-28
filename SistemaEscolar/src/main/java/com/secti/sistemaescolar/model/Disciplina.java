@@ -16,6 +16,7 @@ public class Disciplina {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_disciplina")
 	private Long id;
 	
 	@NotBlank
