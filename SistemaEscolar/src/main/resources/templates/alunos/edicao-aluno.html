@@ -12,7 +12,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-xs-8">
-						<h1>Cadastro de Aluno</h1>
+						<h1>Edição de Alunos</h1>
 					</div>
 
 					<div class="col-xs-4">
@@ -30,7 +30,7 @@
 		<div class="container-fluid">
 
 			<form method="POST" class="form-vertical  js-form-loading"
-				th:object="${aluno}" th:action="@{/alunos/novo}">
+				th:object="${aluno}" th:action="@{/alunos/edicao}">
 				<input type="hidden" th:field="*{id}"/>
 				<div class="alert  alert-danger  alert-dismissible" role="alert"
 					th:if="${#fields.hasAnyErrors()}">

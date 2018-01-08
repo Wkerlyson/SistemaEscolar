@@ -1,23 +1,22 @@
 package com.secti.sistemaescolar.model;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Turma {
@@ -31,18 +30,23 @@ public class Turma {
 	private String nomeTurma;
 	
 	@NotNull
+	@Enumerated(EnumType.STRING)
 	private Turno turno;
 	
-	@Temporal(TemporalType.DATE)
+	@NotNull
 	@Column(name = "ano_letivo")
-	private Date anoLetivo;
-
-	@OneToMany(mappedBy = "id.turma")
-	private List<TurmaAluno> turmaAlunos; 
+	private Integer anoLetivo;
 	
+	@ManyToMany
+    @JoinTable(name="turma_aluno", joinColumns=
+    {@JoinColumn(name="id_turma")}, inverseJoinColumns=
+      {@JoinColumn(name="id_aluno")})
+	private List<Aluno> alunos; 
+	
+	@NotEmpty(message = "Escolha pelo menos uma disciplina")
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "turma_disciplina", joinColumns = @JoinColumn(name = "id_turma", referencedColumnName = "id_turma"),
-			inverseJoinColumns = @JoinColumn(name = "id_disciplina", referencedColumnName = "id_disciplina"))  
+	@JoinTable(name = "turma_disciplina", joinColumns = @JoinColumn(name = "id_turma"),
+			inverseJoinColumns = @JoinColumn(name = "id_disciplina"))  
 	private List<Disciplina> disciplinas;
 	
 	public Long getId() {
@@ -69,22 +73,33 @@ public class Turma {
 		this.turno = turno;
 	}
 
-	public Date getAnoLetivo() {
+	public Integer getAnoLetivo() {
 		return anoLetivo;
 	}
 
-	public void setAnoLetivo(Date anoLetivo) {
+	public void setAnoLetivo(Integer anoLetivo) {
 		this.anoLetivo = anoLetivo;
 	}
 	
 	
 
-	public List<TurmaAluno> getTurmaAlunos() {
-		return turmaAlunos;
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
 	}
 
-	public void setTurmaAlunos(List<TurmaAluno> turmaAlunos) {
-		this.turmaAlunos = turmaAlunos;
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
+	}
+
+	
+	
+
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
 	}
 
 	@Override

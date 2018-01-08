@@ -1,18 +1,14 @@
 package com.secti.sistemaescolar.model;
 
-import java.util.Date;
-import java.util.List;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
+import javax.persistence.OneToOne;
 
+import javax.validation.Valid;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -26,10 +22,9 @@ public class Aluno {
 	@Column(name = "nome_aluno")
 	private String nome;
 	
-	@NotNull
-	@Temporal(TemporalType.DATE)
+	@NotBlank
 	@Column(name = "data_nascimento")
-	private Date dataNascimento;
+	private String dataNascimento;
 	
 	@NotBlank
 	@Column(name = "nome_mae")
@@ -38,10 +33,11 @@ public class Aluno {
 	@NotBlank
 	@Column(name = "nome_pai")
 	private String nomePai;
+		
+	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
+	private Endereco endereco;
 	
-	@OneToMany(mappedBy = "id.aluno")
-	private List<TurmaAluno> turmaAlunos;
-
 	public Long getId() {
 		return id;
 	}
@@ -58,11 +54,11 @@ public class Aluno {
 		this.nome = nome;
 	}
 
-	public Date getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
-
-	public void setDataNascimento(Date dataNascimento) {
+	
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -84,13 +80,16 @@ public class Aluno {
 	}
 	
 
-	public List<TurmaAluno> getTurmaAlunos() {
-		return turmaAlunos;
+	
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public void setTurmaAlunos(List<TurmaAluno> turmaAlunos) {
-		this.turmaAlunos = turmaAlunos;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
+	
+	
 
 	@Override
 	public int hashCode() {

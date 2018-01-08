@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+<head>
+</head>
+
+<body>
+	<section layout:fragment="conteudo">
+		<div class="page-header">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-8">
+						<h1>Cadastro de Turmas</h1>
+					</div>
+
+					<div class="col-xs-4">
+						<div class="aw-page-header-controls">
+							<a class="btn btn-primary" th:href="@{/turmas}"> <i
+								class="fa fa-table"></i> <span class="hidden-xs hidden-sm">Lista
+									Turmas</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+
+			<form method="POST" class="form-vertical  js-form-loading"
+				th:object="${turma}" th:action="@{/turmas/novo}">
+				<input type="hidden" th:field="*{id}" />
+				<div class="alert  alert-danger  alert-dismissible" role="alert"
+					th:if="${#fields.hasAnyErrors()}">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+
+					<div th:each="erro: ${#fields.detailedErrors()}">
+						<i class="fa fa-exclamation-circle"></i> <span
+							th:text="${erro.message}">Mensagem erro.</span>
+					</div>
+				</div>
+
+				<div class="alert  alert-success"
+					th:if="${!#strings.isEmpty(mensagem)}">
+					<i class="fa fa-check-circle"></i>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<span th:text="${mensagem}">Mensagem sucesso!</span>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<div class="form-group">
+								<label for="nome">Nome da turma *</label> <input id="nome"
+									type="text" class="form-control" th:field="*{nomeTurma}"
+									placeholder="ex. 5º ano A" />
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="form-group">
+							<label for="turno">Turno *</label> <select id="turno"
+								class="form-control" th:field="*{turno}">
+								<option value="">Selecione o turno</option>
+								<option th:each="turno: ${turnos}" th:value="${turno}"
+									th:text="#{|turno.${turno}|}">Opção 1</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="form-group">
+							<div class="form-group">
+								<label for="nome">Ano Letivo *</label> <input id="anoLetivo"
+									type="text" class="form-control" th:field="*{anoLetivo}"
+									placeholder="ex. 2017" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<strong>Disciplinas:</strong><hr>
+						<div class="form-group">
+							<div th:each="d : ${disciplinas}" class="checkbox-inline">																  
+							  	<input th:id="${d.id}" type="checkbox" th:field="*{disciplinas}" th:value="${d.id}" />
+							  	<label th:text="${d.nome}" th:for="${d.id}">
+							  	</label>
+							</div>
+							<span th:if="${disciplinas.empty}">Nenhuma disciplina cadastrada</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Salvar</button>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

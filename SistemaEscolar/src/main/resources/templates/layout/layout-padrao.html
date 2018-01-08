@@ -44,26 +44,41 @@
 
 		<aside class="aw-layout-sidebar  js-sidebar">
 			<div class="aw-layout-sidebar__content">
-
 				<nav class="aw-menu  js-menu">
-					<ul class="aw-menu__list">
-
-						<li class="aw-menu__item">
-							<a th:href="@{/alunos/novo}">
-								<i class="fa  fa-fw  fa-plus-square"></i>
-
-								<span>Cadastro alunos</span>
-							</a>
-
-							<a th:href="@{/alunos}">
-								<i class="fa  fa-fw  fa-table"></i>
-
-								<span>Lista alunos</span>
-							</a>
-						</li>
-					</ul>
-				</nav>
-
+		    		<ul class="aw-menu__list">
+				        <li class="aw-menu__item">
+				          <a href="#">
+				            <i class="fa  fa-fw  fa-users"></i><span>Alunos</span>
+				            <i class="aw-menu__navigation-icon  fa"></i>
+				          </a>
+				          <ul class="aw-menu__list  aw-menu__list--sublist">
+				            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/alunos/.*}">
+				            	<a th:href="@{/alunos/novo}">Cadastro de alunos</a>
+				            </li>
+				            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/alunos}">
+		                            <a th:href="@{/alunos}">Lista de alunos</a>
+		                    </li>
+				          </ul>
+				        </li>
+				        <li class="aw-menu__item">
+				          <a href="#">
+				            <i class="fa  fa-fw  fa-folder-o"></i><span>Turmas</span>
+				            <i class="aw-menu__navigation-icon  fa"></i>
+				          </a>
+				          <ul class="aw-menu__list  aw-menu__list--sublist">
+				            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/turmas.*}">
+				            	<a th:href="@{/turmas/novo}">Cadastro de turmas</a>
+				            </li>
+				            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/turmas.*}">
+				            	<a th:href="@{/turmas}">Lista de turmas</a>
+				            </li>
+				          </ul>
+				          <li class="aw-menu__item">
+				        	  <a th:href="@{/disciplinas}"><i class="fa  fa-fw  fa-list"></i><span>Disciplinas</span></a>
+				          </li>
+				        </li>
+		   			  </ul>
+		   		</nav>
 			</div>
 		</aside>
 
@@ -83,7 +98,7 @@
 	<script th:src="@{/javascripts/vendors/jquery.mask.min.js}"></script>
 
 	<script>
-		jQuery('.js-moeda').mask("#.##0,00", { reverse: true });
+		jQuery('.dataNasc').mask("00/00/0000", { placeholder : "__/__/____" });
 	</script>
 </body>
 </html>

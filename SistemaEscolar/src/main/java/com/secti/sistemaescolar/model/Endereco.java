@@ -9,17 +9,25 @@ import javax.persistence.Id;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-public class Disciplina {
-	
+public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_disciplina")
+	@Column(name = "id_endereco")
 	private Long id;
 	
 	@NotBlank
-	@Column(name = "nome_disciplina")
-	private String nome;
+	private String cidade;
+
+	@NotBlank
+	private String bairro;
 	
+	@NotBlank
+	private String rua;
+	
+	@NotBlank
+	private String numero;
+	
+
 	public Long getId() {
 		return id;
 	}
@@ -28,14 +36,39 @@ public class Disciplina {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getCidade() {
+		return cidade;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -52,7 +85,7 @@ public class Disciplina {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Disciplina other = (Disciplina) obj;
+		Endereco other = (Endereco) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -60,6 +93,7 @@ public class Disciplina {
 			return false;
 		return true;
 	}
+	
 	
 	
 	
