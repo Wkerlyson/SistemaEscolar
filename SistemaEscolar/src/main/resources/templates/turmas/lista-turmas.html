@@ -58,7 +58,7 @@
 								<td class="text-center"	th:text="${turma.id}"></td>
 
 								<td>
-									<a th:href="@{matricula/turma/{id}(id=${turma.id})}" th:text="${turma.nomeTurma}"></a>
+									<a th:href="@{../turmas/detalhe/{id}(id=${turma.id})}" th:text="${turma.nomeTurma}"></a>
 								</td>
 								<td>
 									<span th:text="${turma.anoLetivo}"></span>

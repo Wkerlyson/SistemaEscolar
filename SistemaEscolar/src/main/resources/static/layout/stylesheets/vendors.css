@@ -3273,13 +3273,13 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #1e94d2;
+  color: #072866;
   text-decoration: none;
 }
 a:hover,
 a:focus {
   color: #14658f;
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:focus {
   outline: thin dotted;
@@ -5291,26 +5291,26 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary {
   color: #ffffff;
-  background-color: #1e94d2;
-  border-color: #1c8bc5;
+  background-color: #072866;
+  border-color: #072866;
 }
 .btn-primary:focus,
 .btn-primary.focus {
   color: #ffffff;
-  background-color: #1875a5;
-  border-color: #0c3c55;
+  background-color: #072866e6;
+  border-color: #072866e6;
 }
 .btn-primary:hover {
   color: #ffffff;
-  background-color: #1875a5;
-  border-color: #14658f;
+  background-color: #072866e6;
+  border-color:#072866e6;
 }
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #ffffff;
-  background-color: #1875a5;
-  border-color: #14658f;
+  background-color: #072866e6;
+  border-color: #072866e6;
 }
 .btn-primary:active:hover,
 .btn-primary.active:hover,
@@ -5322,8 +5322,8 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary.active.focus,
 .open > .dropdown-toggle.btn-primary.focus {
   color: #ffffff;
-  background-color: #135f86;
-  border-color: #0c3c55;
+  background-color: #072866e6;
+  border-color: #072866e6;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -5742,7 +5742,7 @@ tbody.collapse.in {
   color: #ffffff;
   text-decoration: none;
   outline: 0;
-  background-color: #1e94d2;
+  background-color: #072866e3;
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
@@ -6176,7 +6176,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a:hover,
 .nav .open > a:focus {
   background-color: #eeeeee;
-  border-color: #1e94d2;
+  border-color: #072866e3;
 }
 .nav .nav-divider {
   height: 1px;
@@ -6269,7 +6269,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #ffffff;
-  background-color: #1e94d2;
+  background-color: #072866e3;
 }
 .nav-stacked > li {
   float: none;
@@ -6664,8 +6664,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #1e94d2;
-  border-color: #1a80b5;
+  background-color: #072866;
+  border-color: #072866;
 }
 .navbar-default .navbar-brand {
   color: #ffffff;

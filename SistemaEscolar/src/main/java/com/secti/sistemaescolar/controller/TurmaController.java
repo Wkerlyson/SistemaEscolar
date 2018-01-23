@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.secti.sistemaescolar.model.Turma;
 import com.secti.sistemaescolar.model.Turno;
 import com.secti.sistemaescolar.repository.DisciplinaRepository;
+import com.secti.sistemaescolar.repository.MatriculaRepository;
 import com.secti.sistemaescolar.repository.TurmaRepository;
 
 @Controller
@@ -26,6 +27,9 @@ public class TurmaController {
 	
 	@Autowired
 	private DisciplinaRepository dr;
+	
+	@Autowired
+	private MatriculaRepository mr;
 	
 	@GetMapping("/novo")
 	public ModelAndView novaTurma(Turma turma) {
@@ -81,6 +85,15 @@ public class TurmaController {
 		modelAndView.addObject("turnos", Turno.values());
 		modelAndView.addObject("disciplinas", dr.findAll());
 		
+		return modelAndView;
+	}
+	
+		
+	@GetMapping("detalhe/{id}")
+	public ModelAndView dadosTurma(@PathVariable  Long id) {
+		ModelAndView modelAndView = new ModelAndView("turmas/detalhe-turma");
+		modelAndView.addObject("turma", tr.findOne(id));
+		modelAndView.addObject("alunos", mr.findAll());
 		return modelAndView;
 	}
 	

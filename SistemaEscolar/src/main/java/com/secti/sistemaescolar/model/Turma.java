@@ -37,11 +37,6 @@ public class Turma {
 	@Column(name = "ano_letivo")
 	private Integer anoLetivo;
 	
-	@ManyToMany
-    @JoinTable(name="turma_aluno", joinColumns=
-    {@JoinColumn(name="id_turma")}, inverseJoinColumns=
-      {@JoinColumn(name="id_aluno")})
-	private List<Aluno> alunos; 
 	
 	@NotEmpty(message = "Escolha pelo menos uma disciplina")
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -92,16 +87,6 @@ public class Turma {
 	}
 
 	
-	
-
-	public List<Aluno> getAlunos() {
-		return alunos;
-	}
-
-	public void setAlunos(List<Aluno> alunos) {
-		this.alunos = alunos;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;

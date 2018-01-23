@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+<head>
+</head>
+
+<body>
+	<section layout:fragment="conteudo">
+		<div class="page-header">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-8">
+						<br />
+						<h3>
+							MATRÍCULA TURMA: <span th:text="*{turma.nomeTurma}"></span> - <span
+								th:text="*{turma.turno}"></span> - <span
+								th:text="*{turma.anoLetivo}"></span>
+						</h3>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<form method="GET" class="form-vertical  js-form-loading"
+					th:object="${aluno}"
+					th:action="@{/turma/matricula/{id}/busca-aluno(id=${turma.id})}">
+					<!-- <input type="hidden" th:field="*{id}" /> -->
+					<div class="col-sm-12">
+						<ul class="nav nav-tabs">
+							<li><a th:href="@{/turmas/detalhe/{id}(id=${turma.id})}">ALUNOS
+									MATRICULADOS</a></li>
+							<li class="active"><a data-toggle="tab"
+								href="#nova-matricula">NOVA MATRÍCULA</a></li>
+						</ul>
+
+						<div class="tab-content">
+							<div id="nova-matricula" class="tab-pane fade in active">
+								<br />
+								<div class="col-sm-3">
+									<div class="form-group">
+										<div class="form-group">
+											<label for="matricula-aluno">Matrícula</label> <input
+												id="matricula-aluno" type="text" class="form-control"
+												placeholder="Informe a matrícula do aluno" th:field="*{id}" />
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<br>
+									<button type="submit" class="btn btn-default">
+										<i class="fa fa-search"></i> <span class="hidden-xs hidden-sm">Pesquisar</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<br>
+
+			<div class="container-fluid">
+				<div class="row">
+					<form method="POST" th:object="${matricula}"
+						th:action="@{/turma/matricula/nova/}">
+						<div class="table-responsive">
+							<table id="tabela-produtos"
+								class="table  table-striped  table-bordered  table-hover  table-condensed  js-sticky-table">
+								<thead class="aw-table-header-solid">
+									<tr>
+										<th class="av-table-vinhos-col-codigo">Matrícula</th>
+										<th>Nome</th>
+										<th>Dt. Nascimento</th>
+										<th>Nome da mãe</th>
+										<th>Nome do Pai</th>
+										<th class="av-table-vinhos-col-icons"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="aluno: ${alunos}">
+										<td class="text-center" th:text="${aluno.id}"></td>
+
+										<td><a th:href="@{/alunos/{id}(id=${aluno.id})}"
+											th:text="${aluno.nome}"></a></td>
+										<td><span th:text="${aluno.dataNascimento}"></span></td>
+										<td><span th:text="${aluno.nomeMae}"></span></td>
+										<td><span th:text="${aluno.nomePai}"></span></td>
+
+
+										<td class="text-center"><input th:id="${aluno.id}"
+											type="checkbox" th:field="*{aluno}" th:value="${aluno.id}" />
+										</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+						<div class="form-group">
+							<button class="btn  btn-primary" type="submit">Salvar matrícula</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
